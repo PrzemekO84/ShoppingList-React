@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import NewProduct from "./MainComponents/NewProduct";
 import ShoppingList from "./MainComponents/ShoppingList";
 import type { WeightInfo, ProductInfo } from "../Types";
@@ -19,6 +19,19 @@ function Main() {
   });
 
   const [productList, setProductList] = useState<ProductInfo[]>([]);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("myShoppingList")
+    if(savedData){
+      setProductList(JSON.parse(savedData));
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("myShoppingList", JSON.stringify(productList));
+    console.log(localStorage);
+  }, [productList])
+
 
   function deleteItem(id: string){
     setProductList((prevList) => {

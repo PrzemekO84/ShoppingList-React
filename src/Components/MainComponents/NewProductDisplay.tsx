@@ -1,5 +1,6 @@
 import NewProductInput from "./NewProductInput";
 import type { WeightInfo, ProductInfo } from "../../Types";
+import { useEffect } from "react";
 
 type PropsElements = {
     productInfo: ProductInfo
@@ -11,8 +12,40 @@ type PropsElements = {
 }
 
 
-
 function NewProductDispaly(props: PropsElements) {
+
+  function addItem() {
+    props.setProductList((prevList) => [
+      ...prevList,
+      {
+        id: crypto.randomUUID(),
+        productName: props.productInfo.productName,
+        productQuantity: props.productInfo.productQuantity,
+        productWeight: props.productInfo.productWeight + props.weightInfo.unit
+      }])
+    props.setProductInfo({
+      id: "",
+      productName: "",
+      productQuantity: "",
+      productWeight: ""
+    })
+  }
+
+  useEffect(() => {
+
+    function handleEnterEvent(event: KeyboardEvent){
+      if (event.key === "Enter" && props.productInfo.productName !== "") {
+        addItem();
+      }
+    }
+
+    window.addEventListener("keydown", handleEnterEvent)
+
+    return () => {
+      window.removeEventListener("keydown", handleEnterEvent);
+    }
+  }, [props.productInfo])
+
     return (
       <div className="border-3 border-purple-800 shadow-md/25 shadow-white rounded-xl p-5 flex flex-col min-h-110 md:h-auto">
         <h2 className="text-3xl text-center">Product informations</h2>
@@ -25,23 +58,10 @@ function NewProductDispaly(props: PropsElements) {
           </p>
         </div>
         <div className="flex justify-end mr-2">
-          <button className="px-5 py-3 text-2xl border-2 border-black bg-violet-800 rounded-lg cursor-pointer"
-          onClick={() =>{
-            props.setProductList((prevList) => [
-                ...prevList,
-            {
-                id: crypto.randomUUID(),
-                productName: props.productInfo.productName,
-                productQuantity: props.productInfo.productQuantity,
-                productWeight: props.productInfo.productWeight + props.weightInfo.unit
-            }])
-            props.setProductInfo({
-                id: "",
-                productName: "",
-                productQuantity: "",
-                productWeight: ""
-            })
-          }}
+          <button 
+          disabled={!props.productInfo.productName}
+          className="px-5 py-3 text-2xl border-2 border-black bg-violet-800 rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={addItem}
           >
             Add
           </button>

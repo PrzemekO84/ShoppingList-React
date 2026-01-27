@@ -7,12 +7,12 @@ function Footer(){
         <footer className="flex flex-col justify-center items-center h-auto bg-stone-950 py-3 shadow-xl shadow-white">
             <div className="flex justify-center items-center gap-7 my-6">
                 <div className="flex justify-center items-center gap-3">
-                    <a href="">Github </a>
-                    <a href=""><Github /></a>
+                    <a href="https://github.com/PrzemekO84">Github </a>
+                    <a href="https://github.com/PrzemekO84"><Github /></a>
                 </div>
                 <div className="flex justify-center items-center gap-3">
-                    <a href="">Linkedin </a>
-                    <a href=""><Linkedin /></a>
+                    <a href="https://www.linkedin.com/in/przemek-orzechowski/">Linkedin </a>
+                    <a href="https://www.linkedin.com/in/przemek-orzechowski/"><Linkedin /></a>
                 </div>
                 <div className="flex justify-center items-center gap-3">
                     <a href="https://youtu.be/dQw4w9WgXcQ">Youtube </a>

@@ -3,7 +3,7 @@ import { ShoppingBasket } from "lucide-react";
 function Header(){
     return (
         <header>
-            <div className="bg-stone-700 p-4 flex justify-between items-center h-auto shadow-md/30 shadow-white">
+            <div className="bg-stone-800 p-4 flex justify-between items-center h-auto shadow-md/30 shadow-white">
             <div className="flex justify-center items-center gap-3">
                 <h1 className="text-4xl">ShoppingList</h1>
                 <ShoppingBasket className="mt-2"/>

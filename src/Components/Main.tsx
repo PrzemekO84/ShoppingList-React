@@ -18,14 +18,10 @@ function Main() {
     productWeight: "",
   });
 
-  const [productList, setProductList] = useState<ProductInfo[]>([]);
-
-  useEffect(() => {
-    const savedData = localStorage.getItem("myShoppingList")
-    if(savedData){
-      setProductList(JSON.parse(savedData));
-    }
-  }, [])
+  const [productList, setProductList] = useState<ProductInfo[]>(() => {
+    const savedData = localStorage.getItem("myShoppingList");
+    return savedData ? JSON.parse(savedData) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem("myShoppingList", JSON.stringify(productList));

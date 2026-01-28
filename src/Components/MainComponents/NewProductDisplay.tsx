@@ -60,7 +60,7 @@ function NewProductDispaly(props: PropsElements) {
         <div className="flex justify-end mr-2">
           <button 
           disabled={!props.productInfo.productName}
-          className="px-5 py-3 text-2xl border-2 border-black bg-violet-800 rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="buttonTransistion hover:bg-violet-700 px-5 py-3 text-2xl border-2 border-black bg-violet-800 rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={addItem}
           >
             Add

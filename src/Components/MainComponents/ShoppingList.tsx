@@ -17,7 +17,7 @@ function ShoppingList(props: PropsElements){
         <h1 className="text-center text-6xl mb-10">{props.productList.length > 0 && (
             "Shopping List:"
         )}</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 mx-4">
+        <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6 mx-4">
           {props.productList.map((product, index) => {
             return <ListItem key={product.id} productNumber={index + 1}  product={product} weightInfo={props.weightInfo}
             deleteItem={props.deleteItem}
